@@ -1,0 +1,90 @@
+body {
+    background-color: white;
+    background-image: url(img/fondo.png);
+}
+
+/*================================================================================================*/
+#principal {
+    padding: 0px;
+    max-width: 100%;
+    
+}
+/*________________________________________________________________________________________________*/
+
+/*________________________________________________________________________________________________*/
+#encabezado {
+    
+    padding: 0px;
+    font-size: 30px;
+    display: flex;  
+    /* centrar el contenido de un display: flex*/
+    border: 2px white solid;
+    gap: 10px;
+    height: 20%;
+    width: 100%;
+}
+logo {
+    
+}
+#logo img{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+}
+#encabezado h4 {
+    /* quita la mergen den esel titulo */
+    color: white;
+    margin: 10px ;
+    flex: 2;
+    width: 100%;
+    overflow: auto;
+    border: 1px white solid;
+}
+#barra {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1; 
+        margin: 0px;  
+                
+}
+#barra ul {
+    /* quita los puntos de la lista */
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0px;
+    
+}
+#barra a{   
+    color: white;
+}
+
+/*=================================================================================================*/
+
+#separador {
+    padding: 50px;
+}
+
+/*=================================================================================================*/
+
+#contenido_principal {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 0px;
+}
+#izq{
+    flex: 1;
+    padding: 10px;
+    border: 1px black solid;
+    background-color: #EAF2F8;
+}
+#cont{
+    flex: 4;
+    padding: 10px;
+    border: 1px black solid;
+    background-color: #EAF2F8;
+}
