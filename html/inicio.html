@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=roles, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="contenido_principal">
+        <div id="izq" >
+            <ul>
+                <li><a href="redes.html">Inicio</a></li>
+                <li><a href="redes.html">Redes</a></li>
+                <li><a href="redes1.html">redes1</a></li>
+            </ul>
+            <select id="pageSelector" onchange="cambiarPagina(this.value)">
+                    <option value="redes.html">Página 1</option>
+                    <option value="redes1.html">Página 2</option>
+                    <option value="redes2.html">Página 3</option>
+            </select>
+        </div>
+        <div id="cont">
+            <iframe id="pantalla" src="redes.html "></iframe>
+            <script>
+            function cambiarPagina(url) {
+            document.getElementById('pantalla').src = url;
+            }
+            </script>
+        </div> 
+    </section>
+</body>
+</html>
