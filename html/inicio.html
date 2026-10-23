@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=roles, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="..\css\style.css">
+    <title>encabezado</title>
 </head>
 <body>
     <section id="contenido_principal">
         <div id="izq" >
             <ul>
-                <li><a href="redes.html">Inicio</a></li>
-                <li><a href="redes.html">Redes</a></li>
-                <li><a href="redes1.html">redes1</a></li>
+                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase1.html')">Tutoria 1</a></li>
+                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase2.html')">Tutoria 2</a></li>
+                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase3.html')">Tutoria 3</a></li>
+                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase4.html')">Tutoria 4</a></li>
+                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase5.html')">Tutoria 5</a></li>
             </ul>
-            <select id="pageSelector" onchange="cambiarPagina(this.value)">
-                    <option value="redes.html">Página 1</option>
-                    <option value="redes1.html">Página 2</option>
-                    <option value="redes2.html">Página 3</option>
-            </select>
         </div>
         <div id="cont">
-            <iframe id="pantalla" src="redes.html "></iframe>
+            <iframe id="pantalla" src="temasVistos/clase1.html"></iframe>
             <script>
-            function cambiarPagina(url) {
+            function contenido(url) {
             document.getElementById('pantalla').src = url;
             }
             </script>

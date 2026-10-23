@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=roles, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
         <title>encabezado</title>
     </head>
     <body>
@@ -15,14 +17,21 @@
                 </div>
                 <div id="barra">
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="redes.html">Redes</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="javascript:void(0);" onclick="cambiarPagina('html/inicio.html')">Inicio</a></li>
+                        <li><a href="javascript:void(0);" onclick="cambiarPagina('html/redes.html')">Redes</a></li>
+                        <li><a href="javascript:void(0);" onclick="cambiarPagina('html/contacto.html')">Contacto</a></li>
+
                     </ul>
                 </div>
             </header>
             <nav id="separador">
             </nav>
+            <iframe id="pantalla" src="html/inicio.html"></iframe>
+            <script>
+            function cambiarPagina(url) {
+            document.getElementById('pantalla').src = url;
+            }
+            </script>
         </section>
 
 
@@ -31,4 +40,3 @@
             <p>Derechos reservados &copy; 2024</p>
         </footer>
     </body>
-</html>
