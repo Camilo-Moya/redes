@@ -1,6 +1,6 @@
 body {
     background-color: white;
-    background-image: url(img/fondo.png);
+    background-image: url(../img/fondo.png);
 }
 
 /*================================================================================================*/
@@ -12,18 +12,28 @@ body {
 /*________________________________________________________________________________________________*/
 
 /*________________________________________________________________________________________________*/
-#encabezado {
-    
+#encabezado {   
     padding: 0px;
     font-size: 30px;
     display: flex;  
     /* centrar el contenido de un display: flex*/
-    border: 2px white solid;
+    /*border: 2px white solid;*/
     gap: 10px;
     height: 20%;
     width: 100%;
 }
-
+#logo{
+    flex: 1; /* Proporción de tamaño 1 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#titulo{
+    flex: 4; /* Proporción de tamaño 4 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #logo img{
         width: 70px;
         height: 70px;
@@ -33,18 +43,15 @@ body {
 #encabezado h4 {
     /* quita la mergen den esel titulo */
     color: white;
-    margin: 10px ;
-    flex: 2;
-    width: 100%;
-    overflow: auto;
-    border: 1px white solid;
+    margin: 10px;
+    
 }
 #barra {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        flex: 1; 
-        margin: 0px;  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 4; /* Proporción de tamaño 4 */
+    margin: 0px; 
                 
 }
 #barra ul {
@@ -63,7 +70,7 @@ body {
 /*=================================================================================================*/
 
 #separador {
-    padding: 50px;
+    padding-bottom: 10px;
 }
 
 /*=================================================================================================*/
@@ -86,8 +93,14 @@ body {
     border: 1px black solid;
     background-color: #EAF2F8;
 }
-#cont iframe {
+iframe {
     width: 100%;
-    height: 400px;
+    height: 80vh; /* 80vh significa el 80% del alto total de la pantalla */
     border: none;
+}
+footer {
+    background-color: #EAF2F8;
+    padding: 10px;
+    text-align: center;
+    border: 1px black solid;
 }
