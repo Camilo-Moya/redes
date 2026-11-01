@@ -95,17 +95,19 @@
         }
 
         exercises.forEach((exercise) => {
-            const section = document.createElement('article');
+            const section = document.createElement('details');
             section.className = 'exercise-section';
+            section.setAttribute('name', 'class2-exercises');
 
-            const heading = document.createElement('header');
+            const heading = document.createElement('summary');
             heading.className = 'exercise-heading';
             heading.append(
                 createTextElement('p', 'eyebrow', exercise.focus),
                 createTextElement('h2', '', `Ejercicio ${exercise.number}`),
-                createTextElement('p', '', exercise.summary)
+                createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
             );
 
+            const description = createTextElement('p', 'exercise-description', exercise.summary);
             const gallery = document.createElement('div');
             gallery.className = 'exercise-gallery';
 
@@ -132,7 +134,7 @@
                 gallery.append(button);
             });
 
-            section.append(heading, gallery);
+            section.append(heading, description, gallery);
             exerciseList.append(section);
         });
 

@@ -30,7 +30,8 @@
                 const mainFrame = document.getElementById('pantalla');
 
                 window.addEventListener('message', (event) => {
-                    if (event.source !== mainFrame.contentWindow || event.data?.type !== 'tutoria-height') {
+                    const messageType = event.data?.type;
+                    if (event.source !== mainFrame.contentWindow || !['content-height', 'tutoria-height'].includes(messageType)) {
                         return;
                     }
 
@@ -46,9 +47,9 @@
                 }
             </script>
     </section>
-    <br>
-    <footer>
+
+</body>
+ <footer>
         <p>Derechos reservados &copy; 2024</p>
     </footer>
-</body>
 </html>

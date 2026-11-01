@@ -1,6 +1,20 @@
 (() => {
     const frameType = document.currentScript.dataset.frameType;
 
+    if (frameType === 'content') {
+        const content = document.querySelector('.tutoria-page, .team-page') || document.body;
+
+        const reportContentHeight = () => {
+            const height = Math.ceil(content.getBoundingClientRect().height);
+            window.parent.postMessage({ type: 'content-height', height }, '*');
+        };
+
+        new ResizeObserver(reportContentHeight).observe(content);
+        window.addEventListener('load', reportContentHeight);
+        window.addEventListener('resize', reportContentHeight);
+        return;
+    }
+
     if (frameType === 'class') {
         const content = document.querySelector('.class-page') || document.body;
 
