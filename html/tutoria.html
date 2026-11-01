@@ -2,44 +2,61 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=roles, initial-scale=1.0">
-    <link rel="stylesheet" href="..\css\style.css">
-    <title>encabezado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Tutorías</title>
 </head>
 <body>
     <header id="encabezado">
         <div id="logo">
-            <img src="..\img\logo.png" alt="Logo de la página">
+            <a href="../index.html"><img src="../img/logo.png" alt="Logo de la página"></a>
         </div>
         <div id="titulo">
-            <h4>Bienvenido a mi página web</h4>
+            <h4>Sección de Tutorías</h4>
         </div>
         <div id="barra">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="tutoria.html">tutorias</a></li>
-                <li><a href="javascript:void(0);" onclick="cambiarPagina('html/redes.html')">Redes</a></li>
-                <li><a href="javascript:void(0);" onclick="cambiarPagina('html/contacto.html')">Contacto</a></li>
+                <li><a href="tutoria.html">Tutorías</a></li>
             </ul>
         </div>
     </header>
     <br>
     <section id="contenido_principal">
-        <div id="izq" >
+        <div id="izq">
             <ul>
-                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase1.html')">Tutoria 1</a></li>
-                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase2.html')">Tutoria 2</a></li>
-                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase3.html')">Tutoria 3</a></li>
-                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase4.html')">Tutoria 4</a></li>
-                <li><a href="javascript:void(0);" onclick="contenido('temasVistos/clase5.html')">Tutoria 5</a></li>
+                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase1.html')">Tutoría 1</a></li>
+                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase2.html')">Tutoría 2</a></li>
+                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase3.html')">Tutoría 3</a></li>
+                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase4.html')">Tutoría 4</a></li>
+                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase5.html')">Tutoría 5</a></li>
             </ul>
         </div>
         <div id="cont">
-            <iframe id="pantalla" src="temasVistos/clase1.html"is)" onload="ajustarIframe(this)" scrolling="no"></iframe>
+            
+            <!-- Contenedor para las clases -->
+            <div id="pantalla_tutoria"></div>
+            
             <script>
-            function contenido(url) {
-            document.getElementById('pantalla').src = url;
+            async function cargarClase(url) {
+                try {
+                    const respuesta = await fetch(url);
+                    const html = await respuesta.text();
+                    document.getElementById('pantalla_tutoria').innerHTML = html;
+                    sessionStorage.setItem('claseActual', url);
+                } catch (error) {
+                    document.getElementById('pantalla_tutoria').innerHTML = '<p>Error cargando la clase.</p>';
+                }
             }
+
+            window.onload = () => {
+                const claseGuardada = sessionStorage.getItem('claseActual');
+                if (claseGuardada) {
+                    cargarClase(claseGuardada);
+                } else {
+                    cargarClase('temasVistos/clase1.html');
+                }
+            };
             </script>
         </div> 
     </section>

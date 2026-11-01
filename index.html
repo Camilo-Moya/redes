@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=roles, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        <title>encabezado</title>
-    </head>
-    <body>
-        <section id=principal>
-            <header id="encabezado">
-                <div id="logo">
-                    <img src="img\logo.png" alt="Logo de la página">
-                </div>
-                <div id="titulo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <section id="principal">
+        <header id="encabezado">
+            <div id="logo">
+                <a href="index.html"><img src="img/logo.png" alt="Logo de la página"></a>
+            </div>
+            <div id="titulo">
                 <h4>Bienvenido a mi página web</h4>
-                </div>
-                <div id="barra">
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="html/tutoria.html">tutorias</a></li>
-                        <li><a href="javascript:void(0);" onclick="cambiarPagina('html/redes.html')">Redes</a></li>
-                        <li><a href="javascript:void(0);" onclick="cambiarPagina('html/contacto.html')">Contacto</a></li>
-
-                    </ul>
-                </div>
-            </header>
-            <nav id="separador">
-            </nav>
-            <iframe id="pantalla" src="html/prueba.html"></iframe>
-            <script>
-                function cambiarPagina(url) {
-                document.getElementById('pantalla').src = url;
-                }
-            </script>
-        </section>
+            </div>
+            <div id="barra">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="html/tutoria.html">Tutorías</a></li>
+                    <li><a href="javascript:void(0);" onclick="cargarPagina('html/redes.html')">Redes</a></li>
+                    <li><a href="javascript:void(0);" onclick="cargarPagina('html/contacto.html')">Contacto</a></li>
+                </ul>
+            </div>
+        </header>
         <br>
-        <footer>
-            <p>Derechos reservados &copy; 2024</p>
-        </footer>
-    </body>
+        
+        <!-- Contenedor donde se inyectará el HTML (Reemplaza al iframe) -->
+        <div id="pantalla"></div>
+            <script>
+                // Función moderna usando Fetch para traer el HTML de otros archivos
+                async function cargarPagina(url) {
+                    try {
+                        const respuesta = await fetch(url);
+                        if (!respuesta.ok) throw new Error('Error al cargar');
+                        const html = await respuesta.text();
+                    
+                        // Inyecta el contenido en el div
+                        document.getElementById('pantalla').innerHTML = html;
+                    
+                        // Guarda la ruta en la memoria del navegador para cuando recargues
+                        sessionStorage.setItem('paginaActual', url);
+                    } 
+                    catch (error) {
+                    document.getElementById('pantalla').innerHTML = '<p>Error al cargar el contenido.</p>';
+                    }
+                }
+
+            // Cuando cargue el index, revisa si había una página abierta o carga la de prueba
+                window.onload = () => {
+                    const paginaGuardada = sessionStorage.getItem('paginaActual');
+                    if (paginaGuardada) {
+                        cargarPagina(paginaGuardada);
+                    } 
+                    else {
+                        cargarPagina('html/prueba.html');
+                        }
+                };
+            </script>
+    </section>
+    <br>
+    <footer>
+        <p>Derechos reservados &copy; 2024</p>
+    </footer>
+</body>
+</html>
