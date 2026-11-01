@@ -104,3 +104,14 @@ footer {
     text-align: center;
     border: 1px black solid;
 }
+
+/* Reemplazo de los estilos del iframe anterior */
+#pantalla, #pantalla_tutoria {
+    width: 100%;
+    min-height: 80vh; /* Permite que el div crezca si hay mucho contenido */
+    background-color: white; 
+    border: none;
+    box-sizing: border-box;
+    padding: 20px; /* Un poco de espacio interno para que el texto respire */
+    border-radius: 5px; /* Opcional: bordes redondeados */
+}
