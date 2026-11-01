@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Inicio</title>
+    <title>Redes de computadoras | Exposición</title>
 </head>
 <body>
     <section id="principal">
@@ -17,45 +17,33 @@
             </div>
             <div id="barra">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="html/tutoria.html">Tutorías</a></li>
-                    <li><a href="html/contactos.html">Contacto</a></li>
+                    <li><a href="html/queEsRedes.html" onclick="cambiarPagina('html/queEsRedes.html'); return false;">Inicio</a></li>
+                    <li><a href="html/tutoria.html" onclick="cambiarPagina('html/tutoria.html'); return false;">Tutorías</a></li>
+                    <li><a href="html/contactos.html" onclick="cambiarPagina('html/contactos.html'); return false;">Contacto</a></li>
                 </ul>
             </div>
         </header>
         <br>
         
-        <!-- Contenedor donde se inyectará el HTML (Reemplaza al iframe) -->
-        <div id="pantalla"></div>
+        <iframe id="pantalla" src="html/queEsRedes.html" title="Introducción a las redes de computadoras"></iframe>
             <script>
-                // Función moderna usando Fetch para traer el HTML de otros archivos
-                async function cargarPagina(url) {
-                    try {
-                        const respuesta = await fetch(url);
-                        if (!respuesta.ok) throw new Error('Error al cargar');
-                        const html = await respuesta.text();
-                    
-                        // Inyecta el contenido en el div
-                        document.getElementById('pantalla').innerHTML = html;
-                    
-                        // Guarda la ruta en la memoria del navegador para cuando recargues
-                        sessionStorage.setItem('paginaActual', url);
-                    } 
-                    catch (error) {
-                    document.getElementById('pantalla').innerHTML = '<p>Error al cargar el contenido.</p>';
-                    }
-                }
+                const mainFrame = document.getElementById('pantalla');
 
-            // Cuando cargue el index, revisa si había una página abierta o carga la de prueba
-                window.onload = () => {
-                    const paginaGuardada = sessionStorage.getItem('paginaActual');
-                    if (paginaGuardada) {
-                        cargarPagina(paginaGuardada);
-                    } 
-                    else {
-                        cargarPagina('html/prueba.html');
-                        }
-                };
+                window.addEventListener('message', (event) => {
+                    if (event.source !== mainFrame.contentWindow || event.data?.type !== 'tutoria-height') {
+                        return;
+                    }
+
+                    const height = Number(event.data.height);
+                    if (Number.isFinite(height)) {
+                        mainFrame.style.height = `${Math.max(520, Math.ceil(height))}px`;
+                    }
+                });
+
+                function cambiarPagina(url) {
+                    mainFrame.style.height = '';
+                    mainFrame.src = url;
+                }
             </script>
     </section>
     <br>

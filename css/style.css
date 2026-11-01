@@ -115,3 +115,9 @@ footer {
     padding: 20px; /* Un poco de espacio interno para que el texto respire */
     border-radius: 5px; /* Opcional: bordes redondeados */
 }
+
+#pantalla {
+    display: block;
+    height: calc(100vh - 140px);
+    min-height: 520px;
+}

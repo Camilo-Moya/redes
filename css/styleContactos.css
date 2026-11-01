@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f3f6f5;
+    color: #172d35;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.team-page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 38px clamp(18px, 5vw, 56px) 48px;
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.eyebrow,
+.student-index {
+    margin: 0;
+    color: #32766e;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.page-heading h1 {
+    margin: 7px 0 6px;
+    color: #173943;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 500;
+}
+
+.page-heading > p:last-child {
+    margin: 0;
+    color: #5d7073;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.student-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.student-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #dce5e2;
+    border-top: 3px solid #32766e;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.student-card h2 {
+    margin: 7px 0 20px;
+    color: #173943;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.student-details {
+    display: grid;
+    gap: 15px;
+    margin: 0;
+}
+
+.student-details div {
+    min-width: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e6ecea;
+}
+
+.student-details div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.student-details dt {
+    margin-bottom: 5px;
+    color: #5d7073;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.student-details dd {
+    margin: 0;
+    color: #263d43;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.student-details dd.contribution {
+    min-height: 42px;
+    color: #748582;
+}
+
+@media (max-width: 640px) {
+    .team-page {
+        padding: 26px 16px 32px;
+    }
+
+    .page-heading {
+        margin-bottom: 20px;
+    }
+
+    .student-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .student-card {
+        padding: 18px;
+    }
+}

@@ -3,67 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleTutoria.css">
-    <title>Tutorías</title>
+    <link rel="stylesheet" href="../css/styleInicio.css">
+    <script src="frameHeight.js" data-frame-type="tutoria" defer></script>
+    <title>Redes de computadoras | Exposición</title>
 </head>
 <body>
-    <header id="encabezado">
-        <div id="logo">
-            <a href="../index.html"><img src="../img/logo.png" alt="Logo de la página"></a>
-        </div>
-        <div id="titulo">
-            <h4>Sección de Tutorías</h4>
-        </div>
-        <div id="barra">
-            <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="html/tutoria.html">Tutorías</a></li>
-                    <li><a href="html/contactos.html">Contacto</a></li>
-            </ul>
-        </div>
-    </header>
-    <br>
-    <section id="contenido_principal">
-        <div id="izq">
-            <ul>
-                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase1.html')">Tutoría 1</a></li>
-                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase2.html')">Tutoría 2</a></li>
-                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase3.html')">Tutoría 3</a></li>
-                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase4.html')">Tutoría 4</a></li>
-                <li><a href="javascript:void(0);" onclick="cargarClase('temasVistos/clase5.html')">Tutoría 5</a></li>
-            </ul>
-        </div>
-        <div id="cont">
-            
-            <!-- Contenedor para las clases -->
-            <div id="pantalla_tutoria"></div>
-            
-            <script>
-            async function cargarClase(url) {
-                try {
-                    const respuesta = await fetch(url);
-                    const html = await respuesta.text();
-                    document.getElementById('pantalla_tutoria').innerHTML = html;
-                    sessionStorage.setItem('claseActual', url);
-                } catch (error) {
-                    document.getElementById('pantalla_tutoria').innerHTML = '<p>Error cargando la clase.</p>';
-                }
-            }
+    <main class="tutoria-page">
+        <header class="page-heading">
+            <p class="eyebrow">EXPOSICIÓN UNIVERSITARIA</p>
+            <h1>Redes de computadoras</h1>
+            <p class="intro">Dos estudiantes presentan los temas y conceptos trabajados durante la materia.</p>
+        </header>
 
-            window.onload = () => {
-                const claseGuardada = sessionStorage.getItem('claseActual');
-                if (claseGuardada) {
-                    cargarClase(claseGuardada);
-                } else {
-                    cargarClase('temasVistos/clase1.html');
-                }
-            };
-            </script>
-        </div> 
-    </section>
-    <br>
-    <footer>
-        <p>Derechos reservados &copy; 2024</p>
-    </footer>
+        <section class="lesson-layout" aria-label="Contenido de las clases">
+            <nav class="lesson-nav" aria-label="Seleccionar clase">
+                <p class="nav-title">CONTENIDO</p>
+                <button class="lesson-button" type="button" data-lesson="1" data-src="temasVistos/clase1.html" aria-current="page">
+                    <span class="lesson-number">01</span><span>Clase 1</span>
+                </button>
+                <button class="lesson-button" type="button" data-lesson="2" data-src="temasVistos/clase2.html">
+                    <span class="lesson-number">02</span><span>Clase 2</span>
+                </button>
+                <button class="lesson-button" type="button" data-lesson="3" data-src="temasVistos/clase3.html">
+                    <span class="lesson-number">03</span><span>Clase 3</span>
+                </button>
+                <button class="lesson-button" type="button" data-lesson="4" data-src="temasVistos/clase4.html">
+                    <span class="lesson-number">04</span><span>Clase 4</span>
+                </button>
+                <button class="lesson-button" type="button" data-lesson="5" data-src="temasVistos/clase5.html">
+                    <span class="lesson-number">05</span><span>Clase 5</span>
+                </button>
+            </nav>
+
+            <section class="lesson-content" aria-label="Clase seleccionada">
+                <div class="content-heading">
+                    <div>
+                        <p class="content-kicker">MATERIAL DE CLASE</p>
+                        <h2 id="lesson-title">Clase 1</h2>
+                    </div>
+                    <span class="lesson-count" id="lesson-count">01 / 05</span>
+                </div>
+                <iframe id="lesson-frame" src="temasVistos/clase1.html" title="Contenido de la Clase 1"></iframe>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        const lessonButtons = document.querySelectorAll('.lesson-button');
+        const lessonFrame = document.getElementById('lesson-frame');
+        const lessonTitle = document.getElementById('lesson-title');
+        const lessonCount = document.getElementById('lesson-count');
+
+        lessonButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const lesson = button.dataset.lesson;
+                lessonFrame.src = button.dataset.src;
+                lessonFrame.title = `Contenido de la Clase ${lesson}`;
+                lessonTitle.textContent = `Clase ${lesson}`;
+                lessonCount.textContent = `${lesson.padStart(2, '0')} / 05`;
+
+                lessonButtons.forEach((item) => item.removeAttribute('aria-current'));
+                button.setAttribute('aria-current', 'page');
+            });
+        });
+    </script>
 </body>
 </html>

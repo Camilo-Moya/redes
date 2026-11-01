@@ -2,15 +2,82 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../frameHeight.js" data-frame-type="class" defer></script>
+    <title>Clase 1 | Redes</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 14px;
+            color: #263d43;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: #173943;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        p {
+            margin: 0 0 6px;
+        }
+
+        .pdf-viewer {
+            display: block;
+            min-height: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .pdf-disclosure {
+            margin-top: 8px;
+            overflow: hidden;
+            border: 1px solid #dce5e2;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .pdf-disclosure summary {
+            padding: 12px 14px;
+            color: #205e57;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .pdf-disclosure summary::marker {
+            color: #32766e;
+        }
+
+        .pdf-disclosure[open] {
+            display: grid;
+            flex: 1;
+            grid-template-rows: auto minmax(0, 1fr);
+            min-height: 0;
+        }
+
+        .pdf-disclosure[open] summary {
+            border-bottom: 1px solid #e6ecea;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tutoria 1</h1>
-    <p>Que se hizo en esta clase</p>
-    <p>tengo imagenes</p>
-    <p>PDF</p>
-    <iframe src="../pdf/tutoria1.pdf" width="500" height="315"></frame>
+    <h1>Clase 1</h1>
+    <p>Presentación y material de la clase.</p>
+    <details class="pdf-disclosure">
+        <summary>Presentación de la Clase 1 (PDF)</summary>
+        <iframe class="pdf-viewer" src="../../pdf/tutoria1.pdf" title="Documento de la clase 1"></iframe>
+    </details>
     
 </body>
 </html>
