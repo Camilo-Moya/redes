@@ -1,6 +1,117 @@
+body {
+    background-color: white;
+    background-image: url(../img/fondo.png);
+}
 
-.parrafo {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    font-family: inherit;
+/*================================================================================================*/
+#principal {
+    padding: 0px;
+    max-width: 100%;
+    
+}
+/*________________________________________________________________________________________________*/
+
+/*________________________________________________________________________________________________*/
+#encabezado {   
+    padding: 0px;
+    font-size: 30px;
+    display: flex;  
+    /* centrar el contenido de un display: flex*/
+    /*border: 2px white solid;*/
+    gap: 10px;
+    height: 20%;
+    width: 100%;
+}
+#logo{
+    flex: 1; /* Proporción de tamaño 1 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#titulo{
+    flex: 4; /* Proporción de tamaño 4 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#logo img{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+}
+#encabezado h4 {
+    /* quita la mergen den esel titulo */
+    color: white;
+    margin: 10px;
+    
+}
+#barra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 4; /* Proporción de tamaño 4 */
+    margin: 0px; 
+                
+}
+#barra ul {
+    /* quita los puntos de la lista */
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0px;
+    
+}
+#barra a{   
+    color: white;
+}
+
+/*=================================================================================================*/
+
+#separador {
+    padding-bottom: 10px;
+}
+
+/*=================================================================================================*/
+
+#contenido_principal {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 0px;
+}
+#izq{
+    flex: 1;
+    padding: 10px;
+    border: 1px black solid;
+    background-color: #EAF2F8;
+}
+#cont{
+    flex: 4;
+    padding: 10px;
+    border: 1px black solid;
+    background-color: #EAF2F8;
+}
+iframe {
+    width: 100%;
+    height: 80vh; /* 80vh significa el 80% del alto total de la pantalla */
+    border: none;
+}
+footer {
+    background-color: #EAF2F8;
+    padding: 10px;
+    text-align: center;
+    border: 1px black solid;
+}
+
+/* Reemplazo de los estilos del iframe anterior */
+#pantalla, #pantalla_tutoria {
+    width: 100%;
+    min-height: 80vh; /* Permite que el div crezca si hay mucho contenido */
+    background-color: white; 
+    border: none;
+    box-sizing: border-box;
+    padding: 20px; /* Un poco de espacio interno para que el texto respire */
+    border-radius: 5px; /* Opcional: bordes redondeados */
 }
