@@ -15,7 +15,7 @@
             <p class="class-subtitle">Paso a Paso</p>
         </header>
 
-        <section class="step-list" id="step-list" aria-label="Taller Tutoría 3"></section>
+        <section class="exercise-list" id="exercise-list" aria-label="Taller Tutoría 3"></section>
         
         <section class="class-material">
             <h2>TALLER REDUNDANCIA Y ALTA DISPONIBILIDAD EN REDES LAN</h2>
@@ -38,7 +38,7 @@
     </dialog>
     
     <script>
-        const step = [
+        const exercises = [
             {
                 number: 1,
                 focus: 'Topología',
@@ -84,7 +84,7 @@
             }
         ];
 
-        const stepList = document.getElementById('step-list');
+        const exerciseList = document.getElementById('exercise-list');
         const photoDialog = document.getElementById('photo-dialog');
         const previewImage = photoDialog.querySelector('img');
         const previewCaption = document.getElementById('photo-caption');
@@ -96,48 +96,48 @@
             return element;
         }
 
-        step.forEach((step) => {
+        exercises.forEach((exercise) => {
             const section = document.createElement('details');
-            section.className = 'step-section';
-            section.setAttribute('name', 'class3-step');
+            section.className = 'exercise-section';
+            section.setAttribute('name', 'class2-exercises');
 
             const heading = document.createElement('summary');
-            heading.className = 'step-heading';
+            heading.className = 'exercise-heading';
             heading.append(
-                createTextElement('p', 'eyebrow', step.focus),
-                createTextElement('h2', '', `Paso ${step.number}`),
-                createTextElement('span', 'step-photo-count', `${step.photos.length} fotos`)
+                createTextElement('p', 'eyebrow', exercise.focus),
+                createTextElement('h2', '', `Paso ${exercise.number}`),
+                createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
             );
 
-            const description = createTextElement('p', 'step-description', step.summary);
+            const description = createTextElement('p', 'exercise-description', exercise.summary);
             const gallery = document.createElement('div');
-            gallery.className = 'step-gallery';
+            gallery.className = 'exercise-gallery';
 
-            step.photos.forEach((photo) => {
+            exercise.photos.forEach((photo) => {
                 const imagePath = `../../img/Tutoria3/${photo.file}`;
                 const button = document.createElement('button');
                 button.className = 'exercise-image';
                 button.type = 'button';
                 button.setAttribute('aria-haspopup', 'dialog');
-                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Paso ${step.number}`);
+                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Ejercicio ${exercise.number}`);
 
                 const image = document.createElement('img');
                 image.src = imagePath;
-                image.alt = `${photo.caption} del Paso ${step.number}`;
+                image.alt = `${photo.caption} del Ejercicio ${exercise.number}`;
                 image.loading = 'lazy';
 
                 button.append(image, createTextElement('span', '', photo.caption));
                 button.addEventListener('click', () => {
                     previewImage.src = imagePath;
                     previewImage.alt = image.alt;
-                    previewCaption.textContent = `Paso ${step.number} · ${photo.caption}`;
+                    previewCaption.textContent = `Ejercicio ${exercise.number} · ${photo.caption}`;
                     photoDialog.showModal();
                 });
                 gallery.append(button);
             });
 
             section.append(heading, description, gallery);
-            stepList.append(section);
+            exerciseList.append(section);
         });
 
         photoDialog.querySelector('.image-dialog-close').addEventListener('click', () => photoDialog.close());
