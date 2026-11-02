@@ -6,6 +6,39 @@
     <link rel="stylesheet" href="../../css/styleInicio.css">
     <script src="../frameHeight.js" data-frame-type="class" defer></script>
     <title>Clase 4 | Redes</title>
+    <style>
+        /* 1. Elimina la barra de scroll interna que le roba ancho al grid y causa el bucle */
+        html, body {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            width: 100%;
+            margin: 0;
+        }
+
+        /* 2. Estabiliza la cuadrícula para que no salte entre 2 y 3 columnas */
+        .exercise-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* 3. Fija el espacio de cada miniatura para que no cambie la altura de golpe */
+        .exercise-image img {
+            width: 100%;
+            height: 160px !important;
+            object-fit: contain;
+            background-color: #f8fafc;
+            display: block;
+        }
+
+        .class-pdf {
+            width: 100%;
+            height: 500px !important;
+            border: 0;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <main class="class-page">
@@ -21,7 +54,7 @@
             <details class="class-resource">
                 <summary>Taller Tutoría 4 (PDF)</summary>
                 <div class="class-resource-content">
-                    <iframe class="class-pdf" src="../../pdf/tutoria4/taller.pdf" title="Taller de Tutoría 4"></iframe>
+                    <iframe class="class-pdf" src="../../pdf/TallerTutoria4.pdf" title="Taller de Tutoría 4"></iframe>
                 </div>
             </details>
         </section>
@@ -50,55 +83,26 @@
         const exercises = [
             {
                 number: 1,
-                focus: 'Topología · Direccionamiento IP · Ping',
+                focus: 'Topología · Direccionamiento IP · Configuración de enrutamiento',
                 summary: 'Diseño de la topología, asignación de direcciones IP y comprobación de conectividad.',
                 photos: [
-                    { file: '1Tutoria2Eje1Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje1DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje1Ping.png', caption: 'Prueba de conectividad' }
+                    { file: '1Tutoria4Eje1DireccionesRedes.png', caption: 'Direcciones de red de los dispositivos' },
+                    { file: '2Tutoria4Eje1DireccionesRouters.png', caption: 'Direcciones de red de los Routers' },
+                    { file: '3Tutoria4Eje1ConfiguracionRouter4.png', caption: 'Configuración del router 4' },
+                    { file: '4Tutoria4Eje1ConfiguracionRouter5.png', caption: 'Configuración del router 5' },
+                    { file: '5Tutoria4Eje1DirecionesEstaticasRouter4y5.png', caption: 'Direccionamiento IP estático Routers 4 y 5' },
+                    { file: '6Tutoria4Eje1ConfigRouter5.png', caption: 'Añadir redes al router 5' },
+                    { file: '7Tutoria4Eje1Topologia.png', caption: 'Topología de red' }
                 ]
             },
             {
                 number: 2,
-                focus: 'Topología · Direccionamiento IP · Ping',
+                focus: 'Topología · Direccionamiento IP · Configuración de enrutamiento',
                 summary: 'Registro del montaje de red, la configuración IP y la verificación entre dispositivos.',
                 photos: [
-                    { file: '1Tutoria2Eje2Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje2DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje2Ping.png', caption: 'Prueba de conectividad' }
-                ]
-            },
-            {
-                number: 3,
-                focus: 'Topología · Router · Ping',
-                summary: 'Configuración de la topología y el router, con validación de las direcciones y la conectividad.',
-                photos: [
-                    { file: '1Tutoria2Eje3Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje3DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje3ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje3Ping.png', caption: 'Prueba de conectividad' }
-                ]
-            },
-            {
-                number: 4,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Montaje y direccionamiento de la red, seguido de una prueba de conectividad.',
-                photos: [
-                    { file: '1Tutoria2Eje4Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje4DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje4Ping.png', caption: 'Prueba de conectividad' }
-                ]
-            },
-            {
-                number: 5,
-                focus: 'Topología · Router · Conectividad',
-                summary: 'Configuración de la topología y el router, con dos registros de verificación de conectividad.',
-                photos: [
-                    { file: '1Tutoria2Eje5Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje5DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje5ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje5Ping1.png', caption: 'Primera prueba de conectividad' },
-                    { file: '5Tutoria2Eje5Ping2.png', caption: 'Segunda prueba de conectividad' }
+                    { file: '1Tutoria4Eje2ConfigRIPRouter4Interface.png', caption: 'Configuración de RIP en el router 4 desde la Interface' },
+                    { file: '2Tutoria4Eje2ConfigRIPRouter5Consola.png', caption: 'Configuración de RIP en el router 5 desde la Consola' },
+                    { file: '3Tutoria4Eje2TopologiaSimulacion.png', caption: 'Prueba de conectividad mediante simulación' }
                 ]
             }
         ];
@@ -118,7 +122,7 @@
         exercises.forEach((exercise) => {
             const section = document.createElement('details');
             section.className = 'exercise-section';
-            section.setAttribute('name', 'class2-exercises');
+            section.setAttribute('name', 'class4-exercises');
 
             const heading = document.createElement('summary');
             heading.className = 'exercise-heading';
@@ -133,7 +137,7 @@
             gallery.className = 'exercise-gallery';
 
             exercise.photos.forEach((photo) => {
-                const imagePath = `../../img/Tutoria2/Ejercicio${exercise.number}/${photo.file}`;
+                const imagePath = `../../img/Tutoria4/Ejercicio${exercise.number}/${photo.file}`;
                 const button = document.createElement('button');
                 button.className = 'exercise-image';
                 button.type = 'button';
