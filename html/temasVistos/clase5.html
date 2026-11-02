@@ -17,6 +17,23 @@
 
         <section class="exercise-list" id="exercise-list" aria-label="Ejercicios realizados en la clase 2"></section>
         
+        <section class="class-material">
+            <h2>Material de trabajo</h2>
+            <details class="class-resource">
+                <summary>Presentación Clase 5 (PDF)</summary>
+                <div class="class-resource-content">
+                    <iframe class="class-pdf" src="../../pdf/tutoria5/tutoria5.pdf" title="Presentación Clase 5"></iframe>
+                </div>
+            </details>  
+            <details class="class-resource">
+                <summary>Video de la clase 5</summary>
+                <video class="class-video" controls preload="metadata" style="width: 100%; height: 450px; background: #000; display: block; border-radius: 8px; object-fit: contain;">
+                    <source src="../../vid/tutoria5/OSPF.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+            </details>
+    </section>
+
     </main>
 
     <dialog class="image-dialog" id="photo-dialog" aria-labelledby="photo-caption">
@@ -149,19 +166,4 @@
         photoDialog.addEventListener('close', () => previewImage.removeAttribute('src'));
     </script>
 </body>
-< class="class-material">
-            <h2>Material de trabajo</h2>
-            <details class="class-resource">
-                <summary>Presentación Clase 5 (PDF)</summary>
-                <div class="class-resource-content">
-                    <iframe class="class-pdf" src="../../pdf/tutoria5/tutoria5.pdf" title="Presentación Clase 5"></iframe>
-                </div>
-            </details>  
-            <details class="class-resource">
-                <summary>Video de la clase 5</summary>
-                <div class="class-resource-content">
-                    <iframe class="class-pdf" src="../../vid/tutoria5/OSPF.mp4" title="Video"></iframe>
-                </div>
-            </details>
-    </section>
 </html>
