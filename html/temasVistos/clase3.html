@@ -11,20 +11,22 @@
     <main class="class-page">
         <header class="class-heading">
             <p class="eyebrow">CLASE 03</p>
-            <h1>Clase 3</h1>
-            <p class="class-subtitle">Registro fotográfico de los ejercicios de topología, direccionamiento y conectividad.</p>
+            <h1>Configuración de STP Spanning Tree Protocol</h1>
+            <p class="class-subtitle">Paso a Paso</p>
         </header>
+
+        <section class="step-list" id="step-list" aria-label="Taller Tutoría 3"></section>
+        
         <section class="class-material">
-            <h2>Ejercicios realizados</h2>
+            <h2>TALLER REDUNDANCIA Y ALTA DISPONIBILIDAD EN REDES LAN</h2>
             <details class="class-resource">
-                <summary>Ejercicios realizados (PDF)</summary>
+                <summary>Taller Tutoría 3 (PDF)</summary>
                 <div class="class-resource-content">
-                    <iframe class="class-pdf" src="../../pdf/tutoria4_1.pdf" title="Ejercicios de la clase 4"></iframe>
+                    <iframe class="class-pdf" src="../../pdf/TallerTutoria3.pdf" title="Taller de Tutoría 3"></iframe>
                 </div>
             </details>
         </section>
-        <section class="exercise-list" id="exercise-list" aria-label="Ejercicios realizados en la clase 2"></section>
-        
+
     </main>
 
     <dialog class="image-dialog" id="photo-dialog" aria-labelledby="photo-caption">
@@ -36,63 +38,53 @@
     </dialog>
     
     <script>
-        const exercises = [
+        const step = [
             {
                 number: 1,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Diseño de la topología, asignación de direcciones IP y comprobación de conectividad.',
+                focus: 'Topología',
+                summary: 'Construcción de la topología de red.',
                 photos: [
-                    { file: '1Tutoria2Eje1Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje1DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje1Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'Paso1ProtocoloSTP.png', caption: 'Topología de red' }
                 ]
             },
             {
                 number: 2,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Registro del montaje de red, la configuración IP y la verificación entre dispositivos.',
+                focus: 'ROOT BRIDGE',
+                summary: 'Determinar el ROOT BRIDGE.',
                 photos: [
-                    { file: '1Tutoria2Eje2Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje2DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje2Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'Paso2ProtocoloSTP.png', caption: 'ROOT BRIDGE' }
                 ]
             },
             {
                 number: 3,
-                focus: 'Topología · Router · Ping',
-                summary: 'Configuración de la topología y el router, con validación de las direcciones y la conectividad.',
+                focus: 'Configuración ROOT BRIDGE',
+                summary: 'Configuración del ROOT BRIDGE primario y secundario.',
                 photos: [
-                    { file: '1Tutoria2Eje3Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje3DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje3ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje3Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'Paso3ProtocoloSTP.png', caption: 'Primario' },
+                    { file: 'Paso3ProtocoloSTP2.png', caption: 'Secundario' }
                 ]
             },
             {
                 number: 4,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Montaje y direccionamiento de la red, seguido de una prueba de conectividad.',
+                focus: 'Validación de configuración',
+                summary: 'Validacion de (show spanning-tree).',
                 photos: [
-                    { file: '1Tutoria2Eje4Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje4DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje4Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'Paso4ProtocoloSTP.png', caption: 'Switch 1' },
+                    { file: 'Paso4ProtocoloSTP2.png', caption: 'Switch 2' }
                 ]
             },
             {
                 number: 5,
-                focus: 'Topología · Router · Conectividad',
-                summary: 'Configuración de la topología y el router, con dos registros de verificación de conectividad.',
+                focus: 'Validación',
+                summary: 'Validación por Ping y Simulación.',
                 photos: [
-                    { file: '1Tutoria2Eje5Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje5DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje5ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje5Ping1.png', caption: 'Primera prueba de conectividad' },
-                    { file: '5Tutoria2Eje5Ping2.png', caption: 'Segunda prueba de conectividad' }
+                    { file: 'Paso5ProtocoloSTP.png', caption: 'Prueba de Ping' },
+                    { file: 'Paso5ProtocoloSTP2.png', caption: 'Simulación Cisco' }
                 ]
             }
         ];
 
-        const exerciseList = document.getElementById('exercise-list');
+        const stepList = document.getElementById('step-list');
         const photoDialog = document.getElementById('photo-dialog');
         const previewImage = photoDialog.querySelector('img');
         const previewCaption = document.getElementById('photo-caption');
@@ -104,48 +96,48 @@
             return element;
         }
 
-        exercises.forEach((exercise) => {
+        step.forEach((step) => {
             const section = document.createElement('details');
-            section.className = 'exercise-section';
-            section.setAttribute('name', 'class2-exercises');
+            section.className = 'step-section';
+            section.setAttribute('name', 'class3-step');
 
             const heading = document.createElement('summary');
-            heading.className = 'exercise-heading';
+            heading.className = 'step-heading';
             heading.append(
-                createTextElement('p', 'eyebrow', exercise.focus),
-                createTextElement('h2', '', `Ejercicio ${exercise.number}`),
-                createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
+                createTextElement('p', 'eyebrow', step.focus),
+                createTextElement('h2', '', `Paso ${step.number}`),
+                createTextElement('span', 'step-photo-count', `${step.photos.length} fotos`)
             );
 
-            const description = createTextElement('p', 'exercise-description', exercise.summary);
+            const description = createTextElement('p', 'step-description', step.summary);
             const gallery = document.createElement('div');
-            gallery.className = 'exercise-gallery';
+            gallery.className = 'step-gallery';
 
-            exercise.photos.forEach((photo) => {
-                const imagePath = `../../img/Tutoria2/Ejercicio${exercise.number}/${photo.file}`;
+            step.photos.forEach((photo) => {
+                const imagePath = `../../img/Tutoria3/${photo.file}`;
                 const button = document.createElement('button');
                 button.className = 'exercise-image';
                 button.type = 'button';
                 button.setAttribute('aria-haspopup', 'dialog');
-                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Ejercicio ${exercise.number}`);
+                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Paso ${step.number}`);
 
                 const image = document.createElement('img');
                 image.src = imagePath;
-                image.alt = `${photo.caption} del Ejercicio ${exercise.number}`;
+                image.alt = `${photo.caption} del Paso ${step.number}`;
                 image.loading = 'lazy';
 
                 button.append(image, createTextElement('span', '', photo.caption));
                 button.addEventListener('click', () => {
                     previewImage.src = imagePath;
                     previewImage.alt = image.alt;
-                    previewCaption.textContent = `Ejercicio ${exercise.number} · ${photo.caption}`;
+                    previewCaption.textContent = `Paso ${step.number} · ${photo.caption}`;
                     photoDialog.showModal();
                 });
                 gallery.append(button);
             });
 
             section.append(heading, description, gallery);
-            exerciseList.append(section);
+            stepList.append(section);
         });
 
         photoDialog.querySelector('.image-dialog-close').addEventListener('click', () => photoDialog.close());
