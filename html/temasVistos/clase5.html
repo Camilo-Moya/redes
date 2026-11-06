@@ -15,7 +15,7 @@
             <p class="class-subtitle">Registro fotográfico de los ejercicios de topología, direccionamiento y conectividad.</p>
         </header>
 
-        <section class="exercise-list" id="exercise-list" aria-label="Ejercicios realizados en la clase 2"></section>
+        <section class="exercise-list" id="exercise-list" aria-label="Configuracion OSPF"></section>
         
         <section class="class-material">
             <h2>Material de trabajo</h2>
@@ -48,55 +48,35 @@
         const exercises = [
             {
                 number: 1,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Diseño de la topología, asignación de direcciones IP y comprobación de conectividad.',
+                focus: 'Topología · Direccionamiento IP Routers',
+                summary: 'Diseño de la topología, asignación de direcciones IP Routers.',
                 photos: [
-                    { file: '1Tutoria2Eje1Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje1DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje1Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'Topologia.png', caption: 'Topología de red' },
+                    { file: 'R1IP.png', caption: 'Puerto 0/0 Router 1' },
+                    { file: 'R1IP2.png', caption: 'Puerto 0/1 Router 1' },
+                    { file: 'R2IP.png', caption: 'Puerto 0/0 Router 2' },
+                    { file: 'R2IP2.png', caption: 'Puerto 0/1 Router 2' }
                 ]
             },
             {
                 number: 2,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Registro del montaje de red, la configuración IP y la verificación entre dispositivos.',
+                focus: 'Direccionamiento IP Computadoras',
+                summary: 'Configuración de las direcciones IP de las computadoras.',
                 photos: [
-                    { file: '1Tutoria2Eje2Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje2DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje2Ping.png', caption: 'Prueba de conectividad' }
+                    { file: 'PC1IP.png', caption: 'IP  Puerta de Enlace PC1' },
+                    { file: 'PC1IP2.png', caption: 'Direccionamiento IP PC1' },
+                    { file: 'PC2IP.png', caption: 'IP  Puerta de Enlace PC2' },
+                    { file: 'PC2IP2.png', caption: 'Direccionamiento IP PC2' }
                 ]
             },
             {
                 number: 3,
-                focus: 'Topología · Router · Ping',
-                summary: 'Configuración de la topología y el router, con validación de las direcciones y la conectividad.',
+                focus: 'Configuración de OSPF',
+                summary: 'Configuración del protocolo OSPF y verificación de conectividad.',
                 photos: [
-                    { file: '1Tutoria2Eje3Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje3DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje3ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje3Ping.png', caption: 'Prueba de conectividad' }
-                ]
-            },
-            {
-                number: 4,
-                focus: 'Topología · Direccionamiento IP · Ping',
-                summary: 'Montaje y direccionamiento de la red, seguido de una prueba de conectividad.',
-                photos: [
-                    { file: '1Tutoria2Eje4Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje4DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje4Ping.png', caption: 'Prueba de conectividad' }
-                ]
-            },
-            {
-                number: 5,
-                focus: 'Topología · Router · Conectividad',
-                summary: 'Configuración de la topología y el router, con dos registros de verificación de conectividad.',
-                photos: [
-                    { file: '1Tutoria2Eje5Topologia.png', caption: 'Topología de red' },
-                    { file: '2Tutoria2Eje5DirIP.png', caption: 'Direccionamiento IP' },
-                    { file: '3Tutoria2Eje5ConfigRouter.png', caption: 'Configuración del router' },
-                    { file: '4Tutoria2Eje5Ping1.png', caption: 'Primera prueba de conectividad' },
-                    { file: '5Tutoria2Eje5Ping2.png', caption: 'Segunda prueba de conectividad' }
+                    { file: 'confOSPF.png', caption: 'Configuración de OSPF Forma 1' },
+                    { file: 'confOSPF2.png', caption: 'Configuración de OSPF Forma 2' },
+                    { file: 'ping.png', caption: 'Prueba de conectividad' }
                 ]
             }
         ];
@@ -122,7 +102,7 @@
             heading.className = 'exercise-heading';
             heading.append(
                 createTextElement('p', 'eyebrow', exercise.focus),
-                createTextElement('h2', '', `Ejercicio ${exercise.number}`),
+                createTextElement('h2', '', `Paso ${exercise.number}`),
                 createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
             );
 
@@ -131,7 +111,7 @@
             gallery.className = 'exercise-gallery';
 
             exercise.photos.forEach((photo) => {
-                const imagePath = `../../img/Tutoria2/Ejercicio${exercise.number}/${photo.file}`;
+                const imagePath = `../../img/Tutoria5/${photo.file}`;
                 const button = document.createElement('button');
                 button.className = 'exercise-image';
                 button.type = 'button';
