@@ -2,14 +2,164 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/styleInicio.css">
+    <script src="../frameHeight.js" data-frame-type="class" defer></script>
+    <title>Clase 3 | Redes</title>
 </head>
 <body>
-    <h1>Tutoria 3</h1>
-    <p>Que se hizo en esta clase</p>
-    <p>tengo imagenes</p>
-    <p>PDF</p>
+    <main class="class-page">
+        <header class="class-heading">
+            <p class="eyebrow">TUTORIA 03</p>
+            <h1>Configuración de STP Spanning Tree Protocol</h1>
+            <p class="class-subtitle">Paso a Paso</p>
+        </header>
+
+        <section class="exercise-list" id="exercise-list" aria-label="Taller Tutoría 3"></section>
+        
+        <section class="class-material">
+            <h2>TALLER REDUNDANCIA Y ALTA DISPONIBILIDAD EN REDES LAN</h2>
+            <details class="class-resource">
+                <summary>Taller Tutoría 3 (PDF)</summary>
+                <div class="class-resource-content">
+                    <iframe class="class-pdf" src="../../pdf/TallerTutoria3.pdf" title="Taller de Tutoría 3"></iframe>
+                </div>
+            </details>
+        </section>
+
+        <section class="class-material">
+        <h2>Material de trabajo</h2>
+        <details class="class-resource">
+            <summary>Video Apoyo (MP4)</summary>
+            <div class="class-resource-content">
+                <video class="class-video" controls preload="metadata" style="width: 100%; height: 450px; background: #000; display: block; border-radius: 8px; object-fit: contain;">
+                    <source src="../../vid/tutoria3/FundamentosRedundancia.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+            </div>
+        </details>
+    </section>
+
+    </main>
+
+    <dialog class="image-dialog" id="photo-dialog" aria-labelledby="photo-caption">
+        <div class="image-dialog-heading">
+            <p id="photo-caption"></p>
+            <button class="image-dialog-close" type="button" aria-label="Cerrar imagen ampliada">Cerrar</button>
+        </div>
+        <img src="" alt="">
+    </dialog>
     
+    <script>
+        const exercises = [
+            {
+                number: 1,
+                focus: 'Topología',
+                summary: 'Construcción de la topología de red.',
+                photos: [
+                    { file: 'Paso1ProtocoloSTP.png', caption: 'Topología de red' }
+                ]
+            },
+            {
+                number: 2,
+                focus: 'ROOT BRIDGE',
+                summary: 'Determinar el ROOT BRIDGE.',
+                photos: [
+                    { file: 'Paso2ProtocoloSTP.png', caption: 'ROOT BRIDGE' }
+                ]
+            },
+            {
+                number: 3,
+                focus: 'Configuración ROOT BRIDGE',
+                summary: 'Configuración del ROOT BRIDGE primario y secundario.',
+                photos: [
+                    { file: 'Paso3ProtocoloSTP.png', caption: 'Primario' },
+                    { file: 'Paso3ProtocoloSTP2.png', caption: 'Secundario' }
+                ]
+            },
+            {
+                number: 4,
+                focus: 'Validación de configuración',
+                summary: 'Validacion de (show spanning-tree).',
+                photos: [
+                    { file: 'Paso4ProtocoloSTP.png', caption: 'Switch 1' },
+                    { file: 'Paso4ProtocoloSTP2.png', caption: 'Switch 2' }
+                ]
+            },
+            {
+                number: 5,
+                focus: 'Validación',
+                summary: 'Validación por Ping y Simulación.',
+                photos: [
+                    { file: 'Paso5ProtocoloSTP.png', caption: 'Prueba de Ping' },
+                    { file: 'Paso5ProtocoloSTP2.png', caption: 'Simulación Cisco' }
+                ]
+            }
+        ];
+
+        const exerciseList = document.getElementById('exercise-list');
+        const photoDialog = document.getElementById('photo-dialog');
+        const previewImage = photoDialog.querySelector('img');
+        const previewCaption = document.getElementById('photo-caption');
+
+        function createTextElement(tagName, className, text) {
+            const element = document.createElement(tagName);
+            element.className = className;
+            element.textContent = text;
+            return element;
+        }
+
+        exercises.forEach((exercise) => {
+            const section = document.createElement('details');
+            section.className = 'exercise-section';
+            section.setAttribute('name', 'class2-exercises');
+
+            const heading = document.createElement('summary');
+            heading.className = 'exercise-heading';
+            heading.append(
+                createTextElement('p', 'eyebrow', exercise.focus),
+                createTextElement('h2', '', `Paso ${exercise.number}`),
+                createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
+            );
+
+            const description = createTextElement('p', 'exercise-description', exercise.summary);
+            const gallery = document.createElement('div');
+            gallery.className = 'exercise-gallery';
+
+            exercise.photos.forEach((photo) => {
+                const imagePath = `../../img/Tutoria3/${photo.file}`;
+                const button = document.createElement('button');
+                button.className = 'exercise-image';
+                button.type = 'button';
+                button.setAttribute('aria-haspopup', 'dialog');
+                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Ejercicio ${exercise.number}`);
+
+                const image = document.createElement('img');
+                image.src = imagePath;
+                image.alt = `${photo.caption} del Ejercicio ${exercise.number}`;
+                image.loading = 'lazy';
+
+                button.append(image, createTextElement('span', '', photo.caption));
+                button.addEventListener('click', () => {
+                    previewImage.src = imagePath;
+                    previewImage.alt = image.alt;
+                    previewCaption.textContent = `Ejercicio ${exercise.number} · ${photo.caption}`;
+                    photoDialog.showModal();
+                });
+                gallery.append(button);
+            });
+
+            section.append(heading, description, gallery);
+            exerciseList.append(section);
+        });
+
+        photoDialog.querySelector('.image-dialog-close').addEventListener('click', () => photoDialog.close());
+        photoDialog.addEventListener('click', (event) => {
+            if (event.target === photoDialog) {
+                photoDialog.close();
+            }
+        });
+        photoDialog.addEventListener('close', () => previewImage.removeAttribute('src'));
+    </script>
 </body>
 </html>

@@ -2,14 +2,173 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/styleInicio.css">
+    <script src="../frameHeight.js" data-frame-type="class" defer></script>
+    <title>Clase 2 | Redes</title>
 </head>
 <body>
-    <h1>Tutoria 2</h1>
-    <p>Que se hizo en esta clase</p>
-    <p>tengo imagenes</p>
-    <p>PDF</p>
+    <main class="class-page">
+        <header class="class-heading">
+            <p class="eyebrow">TUTORIA 02</p>
+            <h1>Diseño de Redes Simples con Cisco Packet TracerTarea</h1>
+            <p class="class-subtitle">Practica de ejercicios de topología, direccionamiento y conectividad.</p>
+        </header>
+
+        <section class="exercise-list" id="exercise-list" aria-label="Ejercicios realizados en la clase 2"></section>
+        
+        <section class="class-material">
+            <h2>TALLER PRACTICA DE LABORATORIO DE REDES</h2>
+            <details class="class-resource">
+                <summary>Taller Tutoría 2 (PDF)</summary>
+                <div class="class-resource-content">
+                    <iframe class="class-pdf" src="../../pdf/TallerTutoria2.pdf" title="Taller de Tutoría 2"></iframe>
+                </div>
+            </details>
+        </section>
+
+        <section class="class-material">
+        <h2>Material de trabajo</h2>
+        <details class="class-resource">
+            <summary>Video Apoyo (MP4)</summary>
+            <div class="class-resource-content">
+                <video class="class-video" controls preload="metadata"  style="width: 100%; height: 450px; background: #000; display: block; border-radius: 8px; object-fit: contain;"">
+                    <source src="../../vid/tutoria2/CiscoPacketTracer2026.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de videos.
+                </video>
+            </div>
+        </details>
+    </section>
+    </main>
+
+    <dialog class="image-dialog" id="photo-dialog" aria-labelledby="photo-caption">
+        <div class="image-dialog-heading">
+            <p id="photo-caption"></p>
+            <button class="image-dialog-close" type="button" aria-label="Cerrar imagen ampliada">Cerrar</button>
+        </div>
+        <img src="" alt="">
+    </dialog>
     
+    <script>
+        const exercises = [
+            {
+                number: 1,
+                focus: 'Topología · Direccionamiento IP · Ping',
+                summary: 'Diseño de la topología, asignación de direcciones IP y comprobación de conectividad.',
+                photos: [
+                    { file: '1Tutoria2Eje1Topologia.png', caption: 'Topología de red' },
+                    { file: '2Tutoria2Eje1DirIP.png', caption: 'Direccionamiento IP' },
+                    { file: '3Tutoria2Eje1Ping.png', caption: 'Prueba de conectividad' }
+                ]
+            },
+            {
+                number: 2,
+                focus: 'Topología · Direccionamiento IP · Ping',
+                summary: 'Registro del montaje de red, la configuración IP y la verificación entre dispositivos.',
+                photos: [
+                    { file: '1Tutoria2Eje2Topologia.png', caption: 'Topología de red' },
+                    { file: '2Tutoria2Eje2DirIP.png', caption: 'Direccionamiento IP' },
+                    { file: '3Tutoria2Eje2Ping.png', caption: 'Prueba de conectividad' }
+                ]
+            },
+            {
+                number: 3,
+                focus: 'Topología · Router · Ping',
+                summary: 'Configuración de la topología y el router, con validación de las direcciones y la conectividad.',
+                photos: [
+                    { file: '1Tutoria2Eje3Topologia.png', caption: 'Topología de red' },
+                    { file: '2Tutoria2Eje3DirIP.png', caption: 'Direccionamiento IP' },
+                    { file: '3Tutoria2Eje3ConfigRouter.png', caption: 'Configuración del router' },
+                    { file: '4Tutoria2Eje3Ping.png', caption: 'Prueba de conectividad' }
+                ]
+            },
+            {
+                number: 4,
+                focus: 'Topología · Direccionamiento IP · Ping',
+                summary: 'Montaje y direccionamiento de la red, seguido de una prueba de conectividad.',
+                photos: [
+                    { file: '1Tutoria2Eje4Topologia.png', caption: 'Topología de red' },
+                    { file: '2Tutoria2Eje4DirIP.png', caption: 'Direccionamiento IP' },
+                    { file: '3Tutoria2Eje4Ping.png', caption: 'Prueba de conectividad' }
+                ]
+            },
+            {
+                number: 5,
+                focus: 'Topología · Router · Conectividad',
+                summary: 'Configuración de la topología y el router, con dos registros de verificación de conectividad.',
+                photos: [
+                    { file: '1Tutoria2Eje5Topologia.png', caption: 'Topología de red' },
+                    { file: '2Tutoria2Eje5DirIP.png', caption: 'Direccionamiento IP' },
+                    { file: '3Tutoria2Eje5ConfigRouter.png', caption: 'Configuración del router' },
+                    { file: '4Tutoria2Eje5Ping1.png', caption: 'Primera prueba de conectividad' },
+                    { file: '5Tutoria2Eje5Ping2.png', caption: 'Segunda prueba de conectividad' }
+                ]
+            }
+        ];
+
+        const exerciseList = document.getElementById('exercise-list');
+        const photoDialog = document.getElementById('photo-dialog');
+        const previewImage = photoDialog.querySelector('img');
+        const previewCaption = document.getElementById('photo-caption');
+
+        function createTextElement(tagName, className, text) {
+            const element = document.createElement(tagName);
+            element.className = className;
+            element.textContent = text;
+            return element;
+        }
+
+        exercises.forEach((exercise) => {
+            const section = document.createElement('details');
+            section.className = 'exercise-section';
+            section.setAttribute('name', 'class2-exercises');
+
+            const heading = document.createElement('summary');
+            heading.className = 'exercise-heading';
+            heading.append(
+                createTextElement('p', 'eyebrow', exercise.focus),
+                createTextElement('h2', '', `Ejercicio ${exercise.number}`),
+                createTextElement('span', 'exercise-photo-count', `${exercise.photos.length} fotos`)
+            );
+
+            const description = createTextElement('p', 'exercise-description', exercise.summary);
+            const gallery = document.createElement('div');
+            gallery.className = 'exercise-gallery';
+
+            exercise.photos.forEach((photo) => {
+                const imagePath = `../../img/Tutoria2/Ejercicio${exercise.number}/${photo.file}`;
+                const button = document.createElement('button');
+                button.className = 'exercise-image';
+                button.type = 'button';
+                button.setAttribute('aria-haspopup', 'dialog');
+                button.setAttribute('aria-label', `Ampliar ${photo.caption} del Ejercicio ${exercise.number}`);
+
+                const image = document.createElement('img');
+                image.src = imagePath;
+                image.alt = `${photo.caption} del Ejercicio ${exercise.number}`;
+                image.loading = 'lazy';
+
+                button.append(image, createTextElement('span', '', photo.caption));
+                button.addEventListener('click', () => {
+                    previewImage.src = imagePath;
+                    previewImage.alt = image.alt;
+                    previewCaption.textContent = `Ejercicio ${exercise.number} · ${photo.caption}`;
+                    photoDialog.showModal();
+                });
+                gallery.append(button);
+            });
+
+            section.append(heading, description, gallery);
+            exerciseList.append(section);
+        });
+
+        photoDialog.querySelector('.image-dialog-close').addEventListener('click', () => photoDialog.close());
+        photoDialog.addEventListener('click', (event) => {
+            if (event.target === photoDialog) {
+                photoDialog.close();
+            }
+        });
+        photoDialog.addEventListener('close', () => previewImage.removeAttribute('src'));
+    </script>
 </body>
 </html>
